@@ -492,10 +492,26 @@ You can download the PDF and Epub version of this repository from the latest run
 
    2. **Object's create method:**
 
-      The create method of Object creates a new object by passing the prototype object as a parameter
+      The create method of Object creates a new object by passing the prototype object as a parameter. 
 
       ```javascript
       var object = Object.create(null);
+      ```
+      ```javascript
+      const person = {
+        isHuman: false,
+        printIntroduction: function() {
+          console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+        }
+      };
+
+      const me = Object.create(person);
+
+      me.name = 'Matthew'; // "name" is a property set on "me", but not on "person"
+      me.isHuman = true; // inherited properties can be overwritten
+
+      me.printIntroduction();
+      // expected output: "My name is Matthew. Am I human? true"
       ```
 
    3. **Object literal syntax:**
